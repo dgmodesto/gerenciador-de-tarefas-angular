@@ -16,6 +16,7 @@ export class TarefaService {
   cadastrar(tarefa: Tarefa): void {
     const tarefas = this.listarTodos();
     tarefa.id = new Date().getTime();
+    tarefa.concluida = false;
     tarefas.push(tarefa);
     localStorage.tarefas = JSON.stringify(tarefas);
   }
@@ -32,7 +33,7 @@ export class TarefaService {
         objs[index] = tarefa;
       }
     });
-    localStorage.tarefas = tarefas;
+    localStorage.tarefas = JSON.stringify(tarefas);
   }
 
   remover(id: number): void {
@@ -41,7 +42,7 @@ export class TarefaService {
     localStorage.tarefas = JSON.stringify(tarefas);
   }
 
-  alterarStatus(id: Number): void {
+  alterarStatus(id: number): void {
     const tarefas: Tarefa[] = this.listarTodos();
     tarefas.forEach((obj, index, objs) => {
       if (id === obj.id) {
