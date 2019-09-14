@@ -33,7 +33,10 @@ export class ListarTarefaComponent implements OnInit {
     }
   }
 
-  alterarStatus(id: number): void {
-    this.tarefaService.alterarStatus(id);
+  alterarStatus(tarefa: Tarefa): void {
+    if (confirm("Deseja alterar status da tarefa: " + tarefa.nome + "?")) {
+      this.tarefaService.alterarStatus(tarefa.id);
+      this.tarefas = this.tarefaService.listarTodos();
+    }
   }
 }
