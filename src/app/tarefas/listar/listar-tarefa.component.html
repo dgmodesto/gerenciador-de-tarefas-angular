@@ -21,13 +21,24 @@
           type="checkbox"
           [value]="tarefa.id"
           [checked]="tarefa.concluida"
+          (click)="alterarStatus(tarefa)"
         />
       </td>
       <td class="text-center" style="width:250px">
-        <a class="btn btn-xs btn-info" title="Editar" alt="Editar">
+        <a
+          [routerLink]="['/tarefas/editar', tarefa.id]"
+          class="btn btn-xs btn-info"
+          title="Editar"
+          alt="Editar"
+        >
           <span class="fas fa-edit"></span> Editar
         </a>
-        <a class="btn btn-xs btn-danger" title="Remover" alt="Remover">
+        <a
+          [routerLink]="['/tarefas/remover']"
+          class="btn btn-xs btn-danger"
+          title="Remover"
+          alt="Remover"
+        >
           <span class="fas fa-times"></span> Remover
         </a>
       </td>
